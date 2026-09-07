@@ -172,11 +172,11 @@
         }
         from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-        import {
-            getAuth,
-            onAuthStateChanged
-        }
-        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+       import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
         const firebaseConfig = {
@@ -201,6 +201,25 @@
         const db = getFirestore(app);
 
         const auth = getAuth(app);
+        const logoutButton = document.getElementById("logoutButton");
+
+logoutButton.addEventListener("click", async function() {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Logout failed. Please try again.");
+
+    }
+
+});
 
 
         window.firebaseDB = db;
