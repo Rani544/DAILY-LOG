@@ -164,7 +164,26 @@
 
     </div>
 
-    <script src="app.js"></script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD5GqC0KGkQwDII1vazAYStBjoKqAW-DRg",
+    authDomain: "daily-log-2c8db.firebaseapp.com",
+    projectId: "daily-log-2c8db",
+    storageBucket: "daily-log-2c8db.firebasestorage.app",
+    messagingSenderId: "980802103075",
+    appId: "1:980802103075:web:d68978606ffb4d8d3e0e96"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.firebaseDB = db;
+</script>
+
+<script type="module" src="app.js"></script>
 
 </body>
 </html>
