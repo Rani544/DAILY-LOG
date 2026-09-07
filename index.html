@@ -7,6 +7,12 @@
     <title>Zoo Daily Keeper Log</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +30,6 @@
             <label for="date">Date</label>
             <input type="date" id="date" required>
 
-
             <label for="keeper">Keeper</label>
             <select id="keeper" required>
                 <option value="">Select Keeper</option>
@@ -36,7 +41,6 @@
                 <option value="Miftah">Miftah</option>
             </select>
 
-
             <label for="animal">Animal</label>
             <input
                 type="text"
@@ -45,14 +49,12 @@
                 required
             >
 
-
             <label for="animalId">Animal ID</label>
             <input
                 type="text"
                 id="animalId"
                 placeholder="Example: BIN001"
             >
-
 
             <label>Presence</label>
 
@@ -67,7 +69,6 @@
                     Not Present
                 </label>
             </div>
-
 
             <label>Activity</label>
 
@@ -93,7 +94,6 @@
                 </label>
             </div>
 
-
             <label>Appetite</label>
 
             <div class="radio-group">
@@ -113,7 +113,6 @@
                 </label>
             </div>
 
-
             <label for="observation">
                 Behavior / Observation
             </label>
@@ -122,7 +121,6 @@
                 id="observation"
                 placeholder="Write your observation..."
             ></textarea>
-
 
             <label for="health">
                 Health Observation
@@ -133,7 +131,6 @@
                 placeholder="Any health abnormalities?"
             ></textarea>
 
-
             <label for="enrichment">
                 Enrichment
             </label>
@@ -143,7 +140,6 @@
                 placeholder="What enrichment was provided?"
             ></textarea>
 
-
             <label for="remarks">
                 Keeper Remarks
             </label>
@@ -152,7 +148,6 @@
                 id="remarks"
                 placeholder="Additional information..."
             ></textarea>
-
 
             <button type="submit">
                 SAVE DAILY LOG
@@ -165,25 +160,66 @@
     </div>
 
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyD5GqC0KGkQwDII1vazAYStBjoKqAW-DRg",
-    authDomain: "daily-log-2c8db.firebaseapp.com",
-    projectId: "daily-log-2c8db",
-    storageBucket: "daily-log-2c8db.firebasestorage.app",
-    messagingSenderId: "980802103075",
-    appId: "1:980802103075:web:d68978606ffb4d8d3e0e96"
-  };
+        import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+        import {
+            getFirestore
+        }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-  window.firebaseDB = db;
-</script>
+        import {
+            getAuth,
+            onAuthStateChanged
+        }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
-<script type="module" src="app.js"></script>
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyD5GqC0KGkQwDII1vazAYStBjoKqAW-DRg",
+
+            authDomain: "daily-log-2c8db.firebaseapp.com",
+
+            projectId: "daily-log-2c8db",
+
+            storageBucket: "daily-log-2c8db.firebasestorage.app",
+
+            messagingSenderId: "980802103075",
+
+            appId: "1:980802103075:web:d68978606ffb4d8d3e0e96"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+        const auth = getAuth(app);
+
+
+        window.firebaseDB = db;
+
+
+        onAuthStateChanged(auth, function(user) {
+
+            if (user) {
+
+                document.body.style.display = "block";
+
+            } else {
+
+                window.location.href = "login.html";
+
+            }
+
+        });
+
+    </script>
+
+    <script type="module" src="app.js"></script>
 
 </body>
 </html>
