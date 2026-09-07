@@ -1,313 +1,247 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Zoo Daily Keeper Log</title>
+    <title>Zoo Daily Keeper Log</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<style>
-    body {
-        display: none;
-    }
-
-    #keeper {
-        background-color: #f3f3f3;
-    }
-</style>
-```
-
+    <style>
+        body {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<div class="container">
+    <div class="container">
 
-    <h1>🐾 Daily Keeper Log</h1>
+        <h1>🐾 Daily Keeper Log</h1>
+        <button id="logoutButton" type="button">
+    LOGOUT
+</button>
 
-    <button id="logoutButton" type="button">
-        LOGOUT
-    </button>
+        <p class="subtitle">
+            Animal Daily Observation
+        </p>
 
-    <p class="subtitle">
-        Animal Daily Observation
-    </p>
+        <form id="dailyLogForm">
 
-    <form id="dailyLogForm">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
 
-        <label for="date">Date</label>
-        <input type="date" id="date" required>
+            <label for="keeper">Keeper</label>
+            <select id="keeper" required>
+                <option value="">Select Keeper</option>
+                <option value="Edi">Edi</option>
+                <option value="Hendr">Hendr</option>
+                <option value="Rani">Rani</option>
+                <option value="Berta">Berta</option>
+                <option value="Ria">Ria</option>
+                <option value="Miftah">Miftah</option>
+            </select>
 
-        <label for="keeper">Keeper</label>
+            <label for="animal">Animal</label>
+            <input
+                type="text"
+                id="animal"
+                placeholder="Example: Bengkong"
+                required
+            >
 
-        <select id="keeper" required disabled>
-            <option value="">Loading...</option>
-            <option value="Edi">Edi</option>
-            <option value="Hendr">Hendr</option>
-            <option value="Rani">Rani</option>
-            <option value="Berta">Berta</option>
-            <option value="Ria">Ria</option>
-            <option value="Miftah">Miftah</option>
-        </select>
+            <label for="animalId">Animal ID</label>
+            <input
+                type="text"
+                id="animalId"
+                placeholder="Example: BIN001"
+            >
 
-        <small id="keeperInfo"></small>
+            <label>Presence</label>
 
-        <label for="animal">Animal</label>
-        <input
-            type="text"
-            id="animal"
-            placeholder="Example: Bengkong"
-            required
-        >
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="presence" value="Present" required>
+                    Present
+                </label>
 
-        <label for="animalId">Animal ID</label>
-        <input
-            type="text"
-            id="animalId"
-            placeholder="Example: BIN001"
-        >
+                <label>
+                    <input type="radio" name="presence" value="Not Present">
+                    Not Present
+                </label>
+            </div>
 
-        <label>Presence</label>
+            <label>Activity</label>
 
-        <div class="radio-group">
-            <label>
-                <input type="radio" name="presence" value="Present" required>
-                Present
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="activity" value="Normal">
+                    Normal
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Less Active">
+                    Less Active
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Very Active">
+                    Very Active
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Abnormal">
+                    Abnormal
+                </label>
+            </div>
+
+            <label>Appetite</label>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="appetite" value="Normal">
+                    Normal
+                </label>
+
+                <label>
+                    <input type="radio" name="appetite" value="Reduced">
+                    Reduced
+                </label>
+
+                <label>
+                    <input type="radio" name="appetite" value="Refused">
+                    Refused
+                </label>
+            </div>
+
+            <label for="observation">
+                Behavior / Observation
             </label>
 
-            <label>
-                <input type="radio" name="presence" value="Not Present">
-                Not Present
-            </label>
-        </div>
+            <textarea
+                id="observation"
+                placeholder="Write your observation..."
+            ></textarea>
 
-        <label>Activity</label>
-
-        <div class="radio-group">
-            <label>
-                <input type="radio" name="activity" value="Normal">
-                Normal
+            <label for="health">
+                Health Observation
             </label>
 
-            <label>
-                <input type="radio" name="activity" value="Less Active">
-                Less Active
+            <textarea
+                id="health"
+                placeholder="Any health abnormalities?"
+            ></textarea>
+
+            <label for="enrichment">
+                Enrichment
             </label>
 
-            <label>
-                <input type="radio" name="activity" value="Very Active">
-                Very Active
+            <textarea
+                id="enrichment"
+                placeholder="What enrichment was provided?"
+            ></textarea>
+
+            <label for="remarks">
+                Keeper Remarks
             </label>
 
-            <label>
-                <input type="radio" name="activity" value="Abnormal">
-                Abnormal
-            </label>
-        </div>
+            <textarea
+                id="remarks"
+                placeholder="Additional information..."
+            ></textarea>
 
-        <label>Appetite</label>
+            <button type="submit">
+                SAVE DAILY LOG
+            </button>
 
-        <div class="radio-group">
-            <label>
-                <input type="radio" name="appetite" value="Normal">
-                Normal
-            </label>
+        </form>
 
-            <label>
-                <input type="radio" name="appetite" value="Reduced">
-                Reduced
-            </label>
+        <p id="message"></p>
 
-            <label>
-                <input type="radio" name="appetite" value="Refused">
-                Refused
-            </label>
-        </div>
+    </div>
 
-        <label for="observation">
-            Behavior / Observation
-        </label>
+    <script type="module">
 
-        <textarea
-            id="observation"
-            placeholder="Write your observation..."
-        ></textarea>
+        import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
-        <label for="health">
-            Health Observation
-        </label>
-
-        <textarea
-            id="health"
-            placeholder="Any health abnormalities?"
-        ></textarea>
-
-        <label for="enrichment">
-            Enrichment
-        </label>
-
-        <textarea
-            id="enrichment"
-            placeholder="What enrichment was provided?"
-        ></textarea>
-
-        <label for="remarks">
-            Keeper Remarks
-        </label>
-
-        <textarea
-            id="remarks"
-            placeholder="Additional information..."
-        ></textarea>
-
-        <button type="submit">
-            SAVE DAILY LOG
-        </button>
-
-    </form>
-
-    <p id="message"></p>
-
-</div>
-
-
-<script type="module">
-
-    import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
-    import {
-        getFirestore
-    }
-    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
-    import {
-        getAuth,
-        onAuthStateChanged,
-        signOut
-    }
-    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
-
-    const firebaseConfig = {
-
-        apiKey: "AIzaSyD5gC0KGkQwDII1vazAYStBjoKqAW-DRg",
-
-        authDomain: "daily-log-2c8db.firebaseapp.com",
-
-        projectId: "daily-log-2c8db",
-
-        storageBucket: "daily-log-2c8db.firebasestorage.app",
-
-        messagingSenderId: "980802103075",
-
-        appId: "1:980802103075:web:d68978606ffb4d8d3e0e96"
-
-    };
-
-
-    const app = initializeApp(firebaseConfig);
-
-    const db = getFirestore(app);
-
-    const auth = getAuth(app);
-
-
-    window.firebaseDB = db;
-
-
-    const logoutButton =
-        document.getElementById("logoutButton");
-
-
-    logoutButton.addEventListener("click", async function() {
-
-        try {
-
-            await signOut(auth);
-
-            window.location.href = "login.html";
-
-        } catch (error) {
-
-            console.error(error);
-
-            alert("Logout failed. Please try again.");
-
+        import {
+            getFirestore
         }
+        from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-    });
-
-
-    const keeperSelect =
-        document.getElementById("keeper");
-
-    const keeperInfo =
-        document.getElementById("keeperInfo");
+       import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-    onAuthStateChanged(auth, function(user) {
+        const firebaseConfig = {
 
-        if (user) {
+            apiKey: "AIzaSyD5GqC0KGkQwDII1vazAYStBjoKqAW-DRg",
 
-            /*
-             * Temporary keeper mapping.
-             *
-             * Later we will move this information
-             * into Firebase so every keeper can have
-             * their own account.
-             */
+            authDomain: "daily-log-2c8db.firebaseapp.com",
 
-            const keeperAccounts = {
+            projectId: "daily-log-2c8db",
 
-                "registrarkonservasi@gmail.com": "Rani"
+            storageBucket: "daily-log-2c8db.firebasestorage.app",
 
-            };
+            messagingSenderId: "980802103075",
+
+            appId: "1:980802103075:web:d68978606ffb4d8d3e0e96"
+
+        };
 
 
-            const keeperName =
-                keeperAccounts[user.email];
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+        const auth = getAuth(app);
+        const logoutButton = document.getElementById("logoutButton");
+
+logoutButton.addEventListener("click", async function() {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Logout failed. Please try again.");
+
+    }
+
+});
 
 
-            if (keeperName) {
+        window.firebaseDB = db;
 
-                keeperSelect.value = keeperName;
 
-                keeperSelect.disabled = true;
+        onAuthStateChanged(auth, function(user) {
 
-                keeperInfo.textContent =
-                    "Logged in as: " + keeperName;
+            if (user) {
 
                 document.body.style.display = "block";
 
             } else {
 
-                alert(
-                    "This account is not registered as a keeper."
-                );
-
-                signOut(auth);
+                window.location.href = "login.html";
 
             }
 
-        } else {
+        });
 
-            window.location.href = "login.html";
+    </script>
 
-        }
-
-    });
-
-</script>
-
-
-<script type="module" src="app.js"></script>
-```
+    <script type="module" src="app.js"></script>
 
 </body>
 </html>
