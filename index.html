@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zoo Daily Keeper Log</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🐾 Daily Keeper Log</h1>
+
+        <p class="subtitle">
+            Animal Daily Observation
+        </p>
+
+        <form id="dailyLogForm">
+
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+
+
+            <label for="keeper">Keeper</label>
+            <select id="keeper" required>
+                <option value="">Select Keeper</option>
+                <option value="Edi">Edi</option>
+                <option value="Hendr">Hendr</option>
+                <option value="Rani">Rani</option>
+                <option value="Berta">Berta</option>
+                <option value="Ria">Ria</option>
+                <option value="Miftah">Miftah</option>
+            </select>
+
+
+            <label for="animal">Animal</label>
+            <input
+                type="text"
+                id="animal"
+                placeholder="Example: Bengkong"
+                required
+            >
+
+
+            <label for="animalId">Animal ID</label>
+            <input
+                type="text"
+                id="animalId"
+                placeholder="Example: BIN001"
+            >
+
+
+            <label>Presence</label>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="presence" value="Present" required>
+                    Present
+                </label>
+
+                <label>
+                    <input type="radio" name="presence" value="Not Present">
+                    Not Present
+                </label>
+            </div>
+
+
+            <label>Activity</label>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="activity" value="Normal">
+                    Normal
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Less Active">
+                    Less Active
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Very Active">
+                    Very Active
+                </label>
+
+                <label>
+                    <input type="radio" name="activity" value="Abnormal">
+                    Abnormal
+                </label>
+            </div>
+
+
+            <label>Appetite</label>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="appetite" value="Normal">
+                    Normal
+                </label>
+
+                <label>
+                    <input type="radio" name="appetite" value="Reduced">
+                    Reduced
+                </label>
+
+                <label>
+                    <input type="radio" name="appetite" value="Refused">
+                    Refused
+                </label>
+            </div>
+
+
+            <label for="observation">
+                Behavior / Observation
+            </label>
+
+            <textarea
+                id="observation"
+                placeholder="Write your observation..."
+            ></textarea>
+
+
+            <label for="health">
+                Health Observation
+            </label>
+
+            <textarea
+                id="health"
+                placeholder="Any health abnormalities?"
+            ></textarea>
+
+
+            <label for="enrichment">
+                Enrichment
+            </label>
+
+            <textarea
+                id="enrichment"
+                placeholder="What enrichment was provided?"
+            ></textarea>
+
+
+            <label for="remarks">
+                Keeper Remarks
+            </label>
+
+            <textarea
+                id="remarks"
+                placeholder="Additional information..."
+            ></textarea>
+
+
+            <button type="submit">
+                SAVE DAILY LOG
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
